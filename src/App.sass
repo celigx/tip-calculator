@@ -1,2 +1,126 @@
+$primary: #1162AE
+$secondary: #93CBFF
+$light: #F3F8FB
+$textLight: #F3F8FB
+$textDark: #1162AE
+
+h1, h2, h3, h4, h5, h6, p, a
+  margin: 0
+
+// Remove arrows/spinners from input
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+input[type=number]
+  -moz-appearance: textfield
+
+.input
+  background: $light
+  color: $textDark
+  font-size: 18px
+  font-weight: bold
+  text-align: right
+  border-style: none
+  border-radius: 4px
+  width: -webkit-fill-available
+  width: -moz-available
+  padding: 6px 10px
+  
 .app
-  text-align: center
+  margin: 20px 0
+
+  .inputContainer
+    background: $secondary
+    border-radius: 6px
+    padding: 20px
+    margin: 0 20px 20px 20px
+
+    .billContainer
+      margin: 0 0 20px 0
+      .title
+        margin: 0 0 10px 0
+
+    .tip
+      .title
+        margin: 0 0 10px 0
+      .tipPercentage
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        box-sizing: border-box
+        margin: 0 0 20px 0
+
+        .button
+          background: #1162AE
+          color: #fff
+          font-size: 16px
+          font-weight: bold
+          border: none
+          border-radius: 4px
+          min-width: 100px
+          // max-width: 100px
+          width: 100%
+          padding: 12px
+          margin: 0 10px 10px 0
+          flex: 1
+
+        .custom
+          background: $light
+          color: $textDark
+
+  .outputContainer
+    background: $primary
+    border-radius: 6px
+    padding: 40px 20px
+    margin: 0 20px
+
+    .tipAmount
+      display: flex
+      align-items: cemter
+      justify-content: space-between
+      margin: 0 0 40px 0
+      .title
+        color: $light
+      .person
+        color: $secondary
+      .number
+        h1
+          color: $secondary
+
+    .reset
+      background: $secondary
+      color: $textDark
+      border: none
+      font-size: 18px
+      font-weight: bold
+      border-radius: 4px
+      padding: 12px
+      width: -webkit-fill-available
+      width: -moz-available
+
+@media screen and ( min-width: 900px  )
+  .app
+    display: flex
+    align-items: center
+    max-width: 969px
+    height: 100vh
+    margin: 0 auto
+
+    .mainContainer
+      display: flex
+      max-width: 969px
+      margin: 0 auto
+
+    .inputContainer
+      background: none
+      flex: 1
+      margin: 0 20px
+
+    .outputContainer
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      flex: 1
+  
