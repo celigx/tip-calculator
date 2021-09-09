@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.sass';
 
 function App() {
@@ -7,6 +7,10 @@ function App() {
   const [numberOfPeople, setNumberOfPeople] = useState(1)
   const [tipAmount, setTipAmount] = useState(0)
   const [total, setTotal] = useState(0)
+  
+  useEffect(() => {
+    calculate()
+  }, [bill, tipPercentage, numberOfPeople])
 
   // Change bill amount on input change
   const handleBill = (e) => {
@@ -21,6 +25,15 @@ function App() {
   // Change number of people on input change
   const handleNumberOfPeople = (e) => {
     setNumberOfPeople(e.target.value)
+  }
+
+  // Calculate tip amount and total
+  const calculate = () => {
+    const calculateTipAmount = (Number(bill) * (tipPercentage / 100)) / numberOfPeople
+    const calculateTotal = (Number(bill) / numberOfPeople) + calculateTipAmount
+
+    setTipAmount(calculateTipAmount)
+    setTotal(calculateTotal)
   }
 
   return (
