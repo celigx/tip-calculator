@@ -7,6 +7,7 @@ function App() {
   const [numberOfPeople, setNumberOfPeople] = useState(1)
   const [tipAmount, setTipAmount] = useState(0)
   const [total, setTotal] = useState(0)
+  const [activeButton, setActiveButton] = useState(null)
   
   useEffect(() => {
     calculate()
@@ -36,6 +37,11 @@ function App() {
     setTotal(calculateTotal)
   }
 
+  const handleTipPercentage = (e) => {
+    setTipPercentage(e.target.value)
+    setActiveButton(e.target.id)
+  }
+
   return (
     <div className="app">
       <div className="mainContainer">
@@ -48,11 +54,11 @@ function App() {
         <div className="tip">
           <h4 className="title">Select Tip %</h4>
           <div className="tipPercentage">
-            <button className="button" onClick={() => setTipPercentage(5)}>5%</button>
-            <button className="button" onClick={() => setTipPercentage(10)}>10%</button>
-            <button className="button" onClick={() => setTipPercentage(15)}>15%</button>
-            <button className="button" onClick={() => setTipPercentage(25)}>25%</button>
-            <button className="button" onClick={() => setTipPercentage(50)}>50%</button>
+            <button className={activeButton === "a" ? "button active" : "button"} id="a" value={5} onClick={handleTipPercentage}>5%</button>
+            <button className={activeButton === "b" ? "button active" : "button"} id="b" value={10} onClick={handleTipPercentage}>10%</button>
+            <button className={activeButton === "c" ? "button active" : "button"} id="c" value={15} onClick={handleTipPercentage}>15%</button>
+            <button className={activeButton === "d" ? "button active" : "button"} id="d" value={25} onClick={handleTipPercentage}>25%</button>
+            <button className={activeButton === "e" ? "button active" : "button"} id="e" value={50} onClick={handleTipPercentage}>50%</button>
             <input className="button custom" type="number" placeholder="Custom" onChange={handleCustomTipPercentage} />
           </div>
           <div className="numberOfPeople">
