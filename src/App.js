@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import './App.sass';
 
 function App() {
-  const [bill, setBill] = useState(0)
+  const [bill, setBill] = useState("")
   const [tipPercentage, setTipPercentage] = useState(0)
   const [numberOfPeople, setNumberOfPeople] = useState(1)
   const [tipAmount, setTipAmount] = useState(0)
   const [total, setTotal] = useState(0)
-  const [activeButton, setActiveButton] = useState(null)
+  const [activeButton, setActiveButton] = useState("")
   
   useEffect(() => {
     calculate()
@@ -42,6 +42,14 @@ function App() {
     setActiveButton(e.target.id)
   }
 
+  // Reset values
+  const handleReset = () => {
+    setBill("")
+    setTipPercentage(null)
+    setNumberOfPeople(1)
+    setActiveButton(null)
+  }
+
   return (
     <div className="app">
       <div className="mainContainer">
@@ -49,7 +57,7 @@ function App() {
       <div className="inputContainer">
         <div className="billContainer">
           <h4 className="title">Bill</h4>
-          <input className="input" type="number" placeholder="0" onChange={handleBill} />
+          <input className="input" type="number" placeholder="0" value={bill} onChange={handleBill} />
         </div>
         <div className="tip">
           <h4 className="title">Select Tip %</h4>
@@ -63,7 +71,7 @@ function App() {
           </div>
           <div className="numberOfPeople">
             <h4 className="title">Number of people</h4>
-            <input className="input" type="number" placeholder="1" onChange={handleNumberOfPeople} />
+            <input className="input" type="number" placeholder="1" value={numberOfPeople} onChange={handleNumberOfPeople} />
           </div>
         </div>
       </div>
@@ -87,7 +95,7 @@ function App() {
             <h1>{`$ ${total}`}</h1>
           </div>
         </div>
-          <button className="reset">RESET</button>
+          <button className="reset" onClick={handleReset}>RESET</button>
       </div>
 
       </div>
