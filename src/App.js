@@ -51,6 +51,7 @@ function App() {
     setActiveButton(null)
   }
 
+
   // Format number as currency
   const handleFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
@@ -87,7 +88,8 @@ function App() {
             <p className="person">/ person</p>
           </div>
           <div className="number">
-            <h1>{handleFormat.format(tipAmount)}</h1>
+            {/* isFinite returns false if the number is POSITIVE_INFINITY, NEGATIVE_INFINITY or NaN */}
+            <h1>{isFinite(tipAmount) ? handleFormat.format(tipAmount) : handleFormat.format(0)}</h1>
           </div>
         </div>
         <div className="tipAmount">
@@ -96,7 +98,8 @@ function App() {
             <p className="person">/ person</p>
           </div>
           <div className="number">
-            <h1>{handleFormat.format(total)}</h1>
+            {/* isFinite returns false if the number is POSITIVE_INFINITY, NEGATIVE_INFINITY or NaN */}
+            <h1>{isFinite(total) ? handleFormat.format(total) : handleFormat.format(0)}</h1>
           </div>
         </div>
           <button className="reset" onClick={handleReset}>RESET</button>
