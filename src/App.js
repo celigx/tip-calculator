@@ -50,6 +50,9 @@ function App() {
     setActiveButton(null)
   }
 
+  // Format number as currency
+  const handleFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+
   return (
     <div className="app">
       <div className="mainContainer">
@@ -83,7 +86,7 @@ function App() {
             <p className="person">/ person</p>
           </div>
           <div className="number">
-            <h1>{`$ ${tipAmount}`}</h1>
+            <h1>{handleFormat.format(tipAmount)}</h1>
           </div>
         </div>
         <div className="tipAmount">
@@ -92,7 +95,7 @@ function App() {
             <p className="person">/ person</p>
           </div>
           <div className="number">
-            <h1>{`$ ${total}`}</h1>
+            <h1>{handleFormat.format(total)}</h1>
           </div>
         </div>
           <button className="reset" onClick={handleReset}>RESET</button>
