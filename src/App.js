@@ -71,7 +71,7 @@ function App() {
             <button className={activeButton === "c" ? "button active" : "button"} id="c" value={15} onClick={handleTipPercentage}>15%</button>
             <button className={activeButton === "d" ? "button active" : "button"} id="d" value={25} onClick={handleTipPercentage}>25%</button>
             <button className={activeButton === "e" ? "button active" : "button"} id="e" value={50} onClick={handleTipPercentage}>50%</button>
-            <input className={activeButton === "f" ? "button custom" : "button custom"} id="f" type="number" placeholder="Custom" onChange={handleCustomTipPercentage} onClick={handleTipPercentage} />
+            <input className={activeButton === "f" ? "button custom" : "button custom"} id="f" type="number" placeholder="Custom" value={activeButton === "f" ? tipPercentage : ""} onChange={handleCustomTipPercentage} onClick={handleTipPercentage} />
           </div>
           <div className="numberOfPeople">
             <h4 className="title">Number of people</h4>
